@@ -31,9 +31,11 @@ RUN groupadd -g $host_gid $USER_NAME && useradd -g $host_uid -m -s /bin/bash -u 
 COPY <<EOF /tmp/.bash_history
 $META_BOOT2QT_DIR/b2qt-init-build-env list-devices
 $META_BOOT2QT_DIR/b2qt-init-build-env init --device $MACHINE
+$META_BOOT2QT_DIR/b2qt-init-build-env init --device imx8qmmek
 repo init -u git://code.qt.io/yocto/boot2qt-manifest -m v5.15.17-lts.xml
 repo sync
 export MACHINE=$MACHINE
+export MACHINE=imx8qmmek
 source ./setup-environment.sh
 bitbake b2qt-embedded-qt5-image
 bitbake meta-toolchain-b2qt-embedded-qt5-sdk
