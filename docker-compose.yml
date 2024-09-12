@@ -1,11 +1,13 @@
 version: "3.8"  # Specify a Compose file version
 
 services:
-  yocto-build:
+  yocto-5.15.17-build:
     image: dunfellcontainer
     stdin_open: true
     tty: true
     volumes:
+      - $HOME/.ssh:/home/$USER/.ssh
+      - $HOME/.gitconfig:/home/$USER/.gitconfig
       - ./build:/yoctobuild
       - ./meta-helloworld:/home/$USER/meta-helloworld
       - ./meta-boot2qt:/home/$USER/meta-boot2qt
@@ -18,5 +20,3 @@ services:
         host_gid: 1000
         BUILD_DIR: /yoctobuild
         META_BOOT2QT_DIR: /home/$USER/meta-boot2qt
-        git_name: user name
-        git_email: user@example.com

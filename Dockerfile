@@ -25,8 +25,6 @@ ARG host_gid=1000
 ARG BUILD_DIR=.
 ARG META_BOOT2QT_DIR=.
 ARG MACHINE=raspberrypi4
-ARG git_name=user name
-ARG git_email=user@example.com
 RUN groupadd -g $host_gid $USER_NAME && useradd -g $host_uid -m -s /bin/bash -u $host_uid $USER_NAME
 
 # Preload the bash history with some commands the user will need to run.
@@ -46,5 +44,3 @@ RUN mv /tmp/.bash_history $HOME
 RUN echo "cat /yoctobuild/README.md" >> $HOME/.bashrc
 
 WORKDIR $BUILD_DIR
-
-RUN git config --global user.name "$git_name" && git config --global user.email "$git_email"
