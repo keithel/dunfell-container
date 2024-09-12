@@ -1,25 +1,6 @@
-[submodule "meta-tegra"]
-	path = meta-tegra
-	url = git@github.com:OE4T/meta-tegra.git
-[submodule "poky"]
-	path = poky
-	url = git://git.yoctoproject.org/poky.git
-	branch = dunfell
-[submodule "meta-qt5"]
-	path = meta-qt5
-	url = git://code.qt.io/yocto/meta-qt5.git
-[submodule "meta-openembedded"]
-	path = meta-openembedded
-	url = git://git.openembedded.org/meta-openembedded
-[submodule "meta-mingw"]
-	path = meta-mingw
-	url = git://git.yoctoproject.org/meta-mingw
 [submodule "meta-boot2qt"]
 	path = meta-boot2qt
 	url = git://code.qt.io/yocto/meta-boot2qt.git
-[submodule "meta-qt6"]
-	path = meta-qt6
-	url = git://code.qt.io/yocto/meta-qt6.git
 [submodule "meta-helloworld"]
 	path = meta-helloworld
 	url = git@git.qt.io:kekyziva/meta-helloworld.git

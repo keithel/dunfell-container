@@ -7,10 +7,8 @@ services:
     tty: true
     volumes:
       - ./build:/yoctobuild
-      - ./meta-example:/home/$USER/Build/yocto/dunfell-container/meta-example
-      - ./meta-tegra:/home/$USER/Build/yocto/dunfell-container/meta-tegra
-      - ./poky:/home/$USER/Build/yocto/dunfell-container/poky
-#      - ./yocto-project-dir:/path/to/yocto/project  # If needed for source code
+      - ./meta-helloworld:/home/$USER/meta-helloworld
+      - ./meta-boot2qt:/home/$USER/meta-boot2qt
 
     build:
       context: ./
@@ -18,3 +16,7 @@ services:
         USER_NAME: $USER
         host_uid: 1000
         host_gid: 1000
+        BUILD_DIR: /yoctobuild
+        META_BOOT2QT_DIR: /home/$USER/meta-boot2qt
+        git_name: user name
+        git_email: user@example.com
