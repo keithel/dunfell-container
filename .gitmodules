@@ -14,3 +14,9 @@
 [submodule "meta-mingw"]
 	path = meta-mingw
 	url = git://git.yoctoproject.org/meta-mingw
+[submodule "meta-boot2qt"]
+	path = meta-boot2qt
+	url = git://code.qt.io/yocto/meta-boot2qt.git
+[submodule "meta-qt6"]
+	path = meta-qt6
+	url = git://code.qt.io/yocto/meta-qt6.git
