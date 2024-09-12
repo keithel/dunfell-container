@@ -16,9 +16,9 @@ RUN /usr/sbin/locale-gen en_US.UTF-8 && update-locale LC_ALL=en_US.UTF-8 LANG=en
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
-ENV USER_NAME yocto
 ENV PROJECT yocto-dunfell
 
+ARG USER_NAME=yocto
 ARG host_uid=1000
 ARG host_gid=1000
 RUN groupadd -g $host_gid $USER_NAME && useradd -g $host_uid -m -s /bin/bash -u $host_uid $USER_NAME
@@ -26,12 +26,9 @@ RUN groupadd -g $host_gid $USER_NAME && useradd -g $host_uid -m -s /bin/bash -u 
 USER $USER_NAME
 
 # Create yocto input and output directories to store the build artifacts
-ENV BUILD_INPUT_DIR /home/$USER_NAME/yocto/input
-ENV BUILD_OUTPUT_DIR /home/$USER_NAME/yocto/output
-RUN mkdir -p $BUILD_INPUT_DIR $BUILD_OUTPUT_DIR
+ENV BUILD_INPUT_DIR /home/$USER_NAME/Build/yocto/dunfell-container
+RUN mkdir -p $BUILD_INPUT_DIR
 
 WORKDIR $BUILD_INPUT_DIR
-RUN git clone -b dunfell git://git.yoctoproject.org/poky.git
-RUN git clone -b dunfell https://github.com/OE4T/meta-tegra.git
 
 USER $USER_NAME
