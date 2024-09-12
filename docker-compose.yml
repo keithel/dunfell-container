@@ -1,0 +1,11 @@
+version: "3.8"  # Specify a Compose file version
+
+services:
+  yocto-build:
+    image: dunfellcontainer
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./build:/yoctobuild
+      - ./meta-example:/home/yocto/yocto/input/meta-example
+#      - ./yocto-project-dir:/path/to/yocto/project  # If needed for source code
