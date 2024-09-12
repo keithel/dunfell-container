@@ -1,27 +1,21 @@
 SUMMARY = "helloworld"
 DESCRIPTION = "A program that prints hello world"
 LICENSE = "CLOSED"
+
+SRC_URI += "file://main.cpp"
 SRC_URI += "file://CMakeLists.txt"
-SRC_URI += "file://hello.cpp"
 
-DEPENDS += "gcc"
-RDEPENDS_helloworld += "libstdc++"
 
-inherit cmake
+inherit cmake_qt5
+
+DEPENDS += "qtbase"
+RDEPENDS_helloworld += "qtbase"
 
 S="${WORKDIR}"
 
-#do_compile() {
-#    cp ../CMakeLists.txt .
-#    cp ../hello.cpp .
-#    cmake -G Ninja
-#    cmake --build .
-#	${CXX} ${CXXFLAGS} ${LDFLAGS} -o ${WORKDIR}/helloworld ${WORKDIR}/hello.cpp
-#}
-
 do_install() {
 	install -d ${D}${base_bindir}
-	install -m 0755 ${B}/helloworld ${D}${base_bindir}
+	install -m 0755 ${B}/helloqtconsole ${D}${base_bindir}
 }
 
-FILES_${PN} += "${base_bindir}/helloworld" 
+FILES_${PN} += "${base_bindir}/helloqtconsole"
