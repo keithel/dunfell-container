@@ -20,3 +20,6 @@
 [submodule "meta-qt6"]
 	path = meta-qt6
 	url = git://code.qt.io/yocto/meta-qt6.git
+[submodule "meta-helloworld"]
+	path = meta-helloworld
+	url = git@git.qt.io:kekyziva/meta-helloworld.git
