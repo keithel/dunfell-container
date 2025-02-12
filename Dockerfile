@@ -32,7 +32,7 @@ COPY <<EOF /tmp/.bash_history
 $META_BOOT2QT_DIR/b2qt-init-build-env list-devices
 $META_BOOT2QT_DIR/b2qt-init-build-env init --device $MACHINE
 $META_BOOT2QT_DIR/b2qt-init-build-env init --device imx8qmmek
-repo init -u git://code.qt.io/yocto/boot2qt-manifest -m v5.15.17-lts.xml
+repo init -u git://code.qt.io/yocto/boot2qt-manifest -m v5.15.18-lts.xml
 repo sync
 export MACHINE=$MACHINE
 export MACHINE=imx8qmmek

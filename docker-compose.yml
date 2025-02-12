@@ -1,7 +1,7 @@
 version: "3.8"  # Specify a Compose file version
 
 services:
-  yocto-5.15.17-build:
+  yocto-5.15.18-build:
     image: dunfellcontainer
     stdin_open: true
     tty: true
