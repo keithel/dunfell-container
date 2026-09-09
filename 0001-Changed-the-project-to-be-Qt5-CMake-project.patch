@@ -1,0 +1,82 @@
+From 035ef2f5c825b8514f3292f8a885b73c900e82f2 Mon Sep 17 00:00:00 2001
+From: Dongmei Wang <dongmei.wang@qt.io>
+Date: Mon, 5 Feb 2024 21:00:25 -0800
+Subject: [PATCH] Changed the project to be Qt5 CMake project
+
+---
+ ...1-Changed-it-to-be-Qt5-CMake-project.patch | 46 +++++++++++++++++++
+ .../quickmwtest/quickmwtest_0.1.bb            |  5 +-
+ 2 files changed, 50 insertions(+), 1 deletion(-)
+ create mode 100644 recipes-quickmwtest/quickmwtest/quickmwtest/0001-Changed-it-to-be-Qt5-CMake-project.patch
+
+diff --git a/recipes-quickmwtest/quickmwtest/quickmwtest/0001-Changed-it-to-be-Qt5-CMake-project.patch b/recipes-quickmwtest/quickmwtest/quickmwtest/0001-Changed-it-to-be-Qt5-CMake-project.patch
+new file mode 100644
+index 0000000..d868e85
+--- /dev/null
++++ b/recipes-quickmwtest/quickmwtest/quickmwtest/0001-Changed-it-to-be-Qt5-CMake-project.patch
+@@ -0,0 +1,46 @@
++From 509ad6944a2f7d8525552d2f72602f1907d1044c Mon Sep 17 00:00:00 2001
++From: Dongmei Wang <dongmei.wang@qt.io>
++Date: Mon, 5 Feb 2024 20:53:33 -0800
++Subject: [PATCH] Changed it to be Qt5 CMake project
++
++---
++ CMakeLists.txt | 18 ++++++------------
++ 1 file changed, 6 insertions(+), 12 deletions(-)
++
++diff --git a/CMakeLists.txt b/CMakeLists.txt
++index d6a9a5d..4f0d1a1 100644
++--- a/CMakeLists.txt
+++++ b/CMakeLists.txt
++@@ -7,23 +7,17 @@ set(CMAKE_AUTOMOC ON)
++ set(CMAKE_AUTORCC ON)
++ set(CMAKE_AUTOUIC ON)
++ 
++-find_package(Qt6 COMPONENTS Core)
++-find_package(Qt6 COMPONENTS Gui)
++-find_package(Qt6 COMPONENTS Quick)
++-find_package(Qt6 COMPONENTS ShaderTools)
+++find_package(Qt5 COMPONENTS Core)
+++find_package(Qt5 COMPONENTS Gui)
+++find_package(Qt5 COMPONENTS Quick)
+++find_package(Qt5 COMPONENTS ShaderTools)
++ 
++-qt_add_executable(quickmwtest
+++add_executable(quickmwtest
++     main.cpp
+++    quickmwtest.qrc
++ )
++ target_link_libraries(quickmwtest PUBLIC
++     Qt::Core
++     Qt::Gui
++     Qt::Quick
++ )
++-
++-qt6_add_resources(quickmwtest "quickmwtest_resources"
++-    PREFIX
++-        "/"
++-    FILES
++-        "screen.qml"
++-)
++-- 
++2.40.0.windows.1
++
+diff --git a/recipes-quickmwtest/quickmwtest/quickmwtest_0.1.bb b/recipes-quickmwtest/quickmwtest/quickmwtest_0.1.bb
+index 15edbbc..49d5d7f 100644
+--- a/recipes-quickmwtest/quickmwtest/quickmwtest_0.1.bb
++++ b/recipes-quickmwtest/quickmwtest/quickmwtest_0.1.bb
+@@ -6,7 +6,10 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+ #SRCREV = "2747d9477fd091623bf9e6241443a3504bfa2361"
+ SRC_URI = "git://github.com/alpqr/quickmwtest.git;rev=2747d9477fd091623bf9e6241443a3504bfa2361"
+ #SRC_URI += " https://github.com/alpqr/quickmwtest.git"
+-SRC_URI += " file://quickmwtest-patch-ver2.patch"
++SRC_URI += " \
++    file://quickmwtest-patch-ver2.patch \ 
++    file://0001-Changed-it-to-be-Qt5-CMake-project.patch \
++	"
+ 
+ inherit qmake5
+ 
+-- 
+2.25.1
+
